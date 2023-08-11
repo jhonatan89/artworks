@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/store/auth/models/user.model';
 
 @Component({
   selector: 'app-login-view',
@@ -7,16 +8,21 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./login-view.component.scss'],
 })
 export class LoginViewComponent implements OnInit {
+  @Output() loginEvent = new EventEmitter<User>();
   constructor(private fb: FormBuilder) {}
   loginForm!: FormGroup;
   ngOnInit(): void {
     this.initLoginForm();
   }
 
-  initLoginForm() {
+  initLoginForm(): void {
     this.loginForm = this.fb.group({
-      username: [''],
-      password: [''],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
     });
+  }
+
+  doLogin(): void {
+    this.loginEvent.emit(this.loginForm.value);
   }
 }

@@ -11,6 +11,7 @@
             id="username"
             aria-labelledby="username"
             formControlName="username"
+            placeholder="Your username"
           />
         </div>
         <div class="login-form__input">
@@ -21,9 +22,10 @@
             id="password"
             aria-labelledby="password"
             formControlName="password"
+            placeholder="Your password"
           />
         </div>
-        <p-button label="Submit"></p-button>
+        <p-button (click)="doLogin()" label="Sign in"></p-button>
       </form>
     </p-card>
   </div>
