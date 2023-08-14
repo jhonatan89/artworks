@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/store/auth/models/user.model';
+import { UserLogin } from 'src/app/store/auth/models/user.model';
 
 @Component({
   selector: 'app-login-view',
@@ -8,7 +8,7 @@ import { User } from 'src/app/store/auth/models/user.model';
   styleUrls: ['./login-view.component.scss'],
 })
 export class LoginViewComponent implements OnInit {
-  @Output() loginEvent = new EventEmitter<User>();
+  @Output() loginEvent = new EventEmitter<UserLogin>();
   constructor(private fb: FormBuilder) {}
   loginForm!: FormGroup;
   ngOnInit(): void {

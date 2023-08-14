@@ -6,6 +6,6 @@ export const artworkReducer = createReducer(
   initialArtworkState,
   on(artworksLoadedSuccess, (state, { artworks }) => ({
     ...state,
-    artwork: { artworks: artworks },
+    artworks: artworks,
   }))
 );

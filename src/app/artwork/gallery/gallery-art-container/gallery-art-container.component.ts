@@ -13,7 +13,7 @@ export class GalleryArtContainerComponent implements OnInit {
   artworks$: Observable<Artwork[]>;
 
   constructor(private store: Store<{ artwork: any }>) {
-    this.artworks$ = store.select((state) => state.artwork.artworks);
+    this.artworks$ = store.select((state) => state.artwork.artworks.data);
   }
 
   ngOnInit(): void {

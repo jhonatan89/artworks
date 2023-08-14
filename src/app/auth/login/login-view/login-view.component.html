@@ -25,7 +25,11 @@
             placeholder="Your password"
           />
         </div>
-        <p-button (click)="doLogin()" label="Sign in"></p-button>
+        <p-button
+          (click)="doLogin()"
+          [disabled]="loginForm.invalid"
+          label="Sign in"
+        ></p-button>
       </form>
     </p-card>
   </div>

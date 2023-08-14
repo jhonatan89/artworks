@@ -1,4 +1,9 @@
-<app-art-card-view
-  *ngFor="let artwork of artworks"
-  [artwork]="artwork"
-></app-art-card-view>
+<div class="gallery">
+  <h1>Gallery</h1>
+  <div class="gallery--container">
+    <app-art-card-view
+      *ngFor="let artwork of artworks"
+      [artwork]="artwork"
+    ></app-art-card-view>
+  </div>
+</div>

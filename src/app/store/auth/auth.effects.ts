@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
-import { login, logout } from './auth.actions';
+import { catchError, exhaustMap, map, mergeMap } from 'rxjs/operators';
+import { login, loginSuccess, logout } from './auth.actions';
 import { AuthService } from './services/auth.service'; // Crea este servicio para manejar la autenticación
 
 @Injectable()
@@ -12,14 +13,21 @@ export class AuthEffects {
       ofType(login),
       mergeMap(({ user }) =>
         this.authService.login(user).pipe(
-          map((user) => ({
-            type: '[Auth API] User logged Success',
-            payload: user,
-          })),
+          map((userResp) => loginSuccess({ user: userResp })),
           catchError(() => EMPTY)
         )
       )
     )
+  );
+
+  loginSuccess$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(loginSuccess),
+        exhaustMap(() => this.router.navigate(['home']))
+      );
+    },
+    { dispatch: false }
   );
 
   logout$ = createEffect(() =>
@@ -37,5 +45,9 @@ export class AuthEffects {
     )
   );
 
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 }

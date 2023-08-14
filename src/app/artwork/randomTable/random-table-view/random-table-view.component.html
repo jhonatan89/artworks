@@ -1,0 +1,23 @@
+<div class="table-container">
+  <h1>Random table</h1>
+  <p-button (click)="generateDate()" label="Generate"></p-button>
+  <p-table
+    [value]="randomData"
+    [tableStyle]="{ 'margin-top': '2rem', 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-profile>
+      <tr>
+        <td>{{ profile.id }}</td>
+        <td>{{ profile.name }}</td>
+        <td>{{ profile.value }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

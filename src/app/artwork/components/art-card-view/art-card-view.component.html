@@ -1,0 +1,30 @@
+<p-card
+  class="card"
+  header="{{ artwork.title | slice : 0 : 20 }}"
+  subheader="{{ artwork.place_of_origin }} - {{ artwork.date_display }}"
+  [style]="{ width: '360px', height: 'auto' }"
+>
+  <ng-template pTemplate="header">
+    <p-image
+      *ngIf="artwork.image_id; else imagePreview"
+      src="https://www.artic.edu/iiif/2/{{
+        artwork.image_id
+      }}/full/843,/0/default.jpg"
+      alt="{{ artwork.title }}"
+      width="360"
+      height="360"
+      [preview]="true"
+    ></p-image>
+    <ng-template #imagePreview>
+      <p-image
+        src="assets/images/placeholder-image.png"
+        alt="Loading image"
+        width="360"
+        height="360"
+      ></p-image>
+    </ng-template>
+  </ng-template>
+  <p>
+    {{ artwork.artist_display }}
+  </p>
+</p-card>
