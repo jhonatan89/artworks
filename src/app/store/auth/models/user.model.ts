@@ -1,7 +1,8 @@
 export interface User {
-  username: string;
-}
-
-export interface UserLogin extends User {
-  password: string;
+  id?: string;
+  username: string | undefined;
+  name?: string;
+  password?: string;
+  token?: string | null;
+  avatar?: string;
 }

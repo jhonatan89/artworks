@@ -7,6 +7,7 @@ import {
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { loginSuccess } from '../store/auth/auth.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -31,7 +32,18 @@ export class AuthGuard {
     return this.store.select('auth').pipe(
       map((auth) => {
         if (!auth.isAuthenticated) {
-          this._router.navigate(['/auth/login']);
+          if (localStorage.getItem('token')) {
+            this.store.dispatch(
+              loginSuccess({
+                user: {
+                  username: localStorage.getItem('token')?.split('.')?.[0],
+                  token: localStorage.getItem('token'),
+                },
+              })
+            );
+          } else {
+            this._router.navigate(['/auth/login']);
+          }
         }
         return auth.isAuthenticated;
       })

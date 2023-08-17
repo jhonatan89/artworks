@@ -4,9 +4,11 @@ import { User } from './models/user.model';
 export interface AuthState {
   isAuthenticated: boolean;
   user: User | null;
+  error?: string;
 }
 
 export const initialAuthState: AuthState = {
   isAuthenticated: false,
   user: null,
+  error: '',
 };

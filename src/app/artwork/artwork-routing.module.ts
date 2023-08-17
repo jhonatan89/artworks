@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { ShareModule } from '../share/share.module';
+import { SharedModule } from '../shared/shared.module';
 import { GalleryArtContainerComponent } from './gallery/gallery-art-container/gallery-art-container.component';
 import { RandomTableContainerComponent } from './randomTable/random-table-container/random-table-container.component';
 
@@ -18,6 +19,11 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forChild(routes), ShareModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    FormsModule,
+    SharedModule,
+  ],
 })
 export class ArtworkRoutingModule {}

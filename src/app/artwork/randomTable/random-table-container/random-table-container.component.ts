@@ -41,7 +41,6 @@ export class RandomTableContainerComponent implements OnInit {
     for (let i = 0; i < count; i++) {
       items.push(this.generateItem());
     }
-    console.log('log', items);
 
     return items;
   }

@@ -1,8 +1,18 @@
 <div class="gallery">
   <h1>Gallery</h1>
+  <input
+    type="text"
+    pInputText
+    class="gallery--filter p-inputtext-lg"
+    [(ngModel)]="filter"
+    id="filter"
+    aria-labelledby="Filter"
+    placeholder="Add a keyword to filter the gallery"
+    (input)="filterArtworks(filter)"
+  />
   <div class="gallery--container">
     <app-art-card-view
-      *ngFor="let artwork of artworks"
+      *ngFor="let artwork of filteredArtwork"
       [artwork]="artwork"
     ></app-art-card-view>
   </div>

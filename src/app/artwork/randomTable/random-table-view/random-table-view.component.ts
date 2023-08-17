@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { RandomModel } from '../models/random.model';
 
 @Component({
   selector: 'app-random-table-view',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./random-table-view.component.scss'],
 })
 export class RandomTableViewComponent {
-  @Input() randomData!: any[];
+  @Input() randomData!: RandomModel[];
   @Output() generateRandomDataEvent = new EventEmitter<boolean>();
 
   constructor() {}

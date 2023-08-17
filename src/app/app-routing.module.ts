@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./artwork/artwork.module').then((m) => m.ArtworkModule),
   },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'home',
+  },
 ];
 
 @NgModule({

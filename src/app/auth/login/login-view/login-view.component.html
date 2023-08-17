@@ -30,6 +30,9 @@
           [disabled]="loginForm.invalid"
           label="Sign in"
         ></p-button>
+        <p class="login--alert-error" *ngIf="error">
+          Username or password incorrect. Try again!
+        </p>
       </form>
     </p-card>
   </div>
